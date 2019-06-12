@@ -7,12 +7,13 @@ def find_max_profit(prices):
     current_max_prof = prices[1] - prices[0]
     current_min_buy = prices[0]
     current_max_sell = prices[1]
-    for x in range(0, len(prices) - 2):
-        for y in range(1, len(prices) - 1):
-            if prices[y] - prices[x] > current_max_prof:
+    for x in range(0, len(prices) - 1):
+        for y in range(x + 1, len(prices)):
+            if prices[y] - prices[x] >= current_max_prof:
                 current_max_prof = prices[y] - prices[x]
                 current_min_buy = prices[x]
                 current_max_sell = prices[y]
+    print(f"{current_max_prof}, maxprof, {current_min_buy}, minbuy, {current_max_sell}")
     return current_max_prof
 
 
